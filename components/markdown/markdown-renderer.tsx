@@ -15,6 +15,17 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+function getTokyoTime(): string {
+  const now = new Date();
+  
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Tokyo',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).format(now);
+}
+
 function processMagicLinks(container: HTMLElement) {
   const magicLinks = container.querySelectorAll(`.${MAGIC_LINK_CLASS}`);
   
@@ -64,6 +75,28 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   useEffect(() => {
     processContent();
   }, [content, processContent]);
+
+  // 東京の時間を定期的に更新
+  useEffect(() => {
+    const updateTokyoTime = () => {
+      if (!containerRef.current) return;
+      
+      const timeElements = containerRef.current.querySelectorAll('[data-tokyo-time]');
+      const currentTime = getTokyoTime();
+      
+      timeElements.forEach((element) => {
+        element.textContent = currentTime;
+      });
+    };
+
+    // 初回の時間を設定
+    updateTokyoTime();
+
+    // 1秒ごとに時間を更新
+    const interval = setInterval(updateTokyoTime, 1000);
+
+    return () => clearInterval(interval);
+  }, [content]);
 
   return (
     <div 

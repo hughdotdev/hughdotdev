@@ -1,13 +1,12 @@
 import { readContentFile, replaceTemplateVariables } from '@/lib/content';
 import { renderMarkdown } from '@/lib/markdown';
 import { getCurrentAge } from '@/lib/time/age';
-import { getTokyoTime } from '@/lib/time/tokyo';
 import { MarkdownRenderer } from '@/components/markdown/markdown-renderer';
 
 export default function Home() {
   const variables = {
     age: getCurrentAge().toString(),
-    time: getTokyoTime(),
+    time: '<span data-tokyo-time></span>',
   };
   
   const rawContent = readContentFile('index.md');
