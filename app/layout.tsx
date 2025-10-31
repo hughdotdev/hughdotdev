@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Background } from "@/components/atoms/background";
+import { Header } from "@/components/organisms/header";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,6 +27,8 @@ export default function RootLayout({
         style={{ fontFamily: 'var(--font-inter)' }}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Background />
+          <Header />
           {children}
         </ThemeProvider>
       </body>
