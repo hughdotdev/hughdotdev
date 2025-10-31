@@ -1,7 +1,10 @@
 import MarkdownIt from 'markdown-it';
 import { MARKDOWN_CONFIG, MAGIC_LINK_CLASS, MAGIC_LINK_PATTERN } from './constants';
+import { parseMagicLinkContent, getDefaultIconUrl, extractDomain, createMagicLinkHtml } from './parser';
 
 const md = new MarkdownIt(MARKDOWN_CONFIG);
+
+const escapeHtml = md.utils.escapeHtml;
 
 md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
   const token = tokens[idx];
@@ -14,6 +17,7 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
     
     if (isMagicLink) {
       token.attrSet('class', MAGIC_LINK_CLASS);
+      token.attrSet('data-processed', 'true');
     }
     
     if (href.startsWith('http')) {
@@ -23,6 +27,41 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
   }
   
   return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.text = (tokens, idx) => {
+  const token = tokens[idx];
+  const content = token.content;
+
+  const match = content.match(MAGIC_LINK_PATTERN);
+  
+  if (match) {
+    let linkDepth = 0;
+    let linkOpenToken = null;
+    
+    for (let i = idx - 1; i >= 0; i--) {
+      if (tokens[i].type === 'link_close') {
+        linkDepth++;
+      } else if (tokens[i].type === 'link_open') {
+        if (linkDepth === 0) {
+          linkOpenToken = tokens[i];
+          break;
+        }
+        linkDepth--;
+      }
+    }
+    
+    if (linkOpenToken?.attrGet('class') === MAGIC_LINK_CLASS) {
+      const { text, iconUrl } = parseMagicLinkContent(content);
+      const href = linkOpenToken.attrGet('href') || '';
+      const domain = extractDomain(href);
+      const imageUrl = iconUrl || getDefaultIconUrl(href, domain);
+      
+      return createMagicLinkHtml(imageUrl, text);
+    }
+  }
+  
+  return escapeHtml(content);
 };
 
 export function renderMarkdown(content: string): string {
