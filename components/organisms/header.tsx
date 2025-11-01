@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Newspaper, Image, Github, Link as LinkIcon, Check, Sun, Moon } from 'lucide-react';
+import { Newspaper, Hammer, Github, Link as LinkIcon, Check, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
 
@@ -53,11 +53,11 @@ export function Header() {
           </Link>
           
           <Link 
-            href="/photos" 
-            aria-label="Photos"
+            href="/crafts" 
+            aria-label="Crafts"
             className="opacity-60 hover:opacity-100 transition-opacity"
           >
-            <Image size={19.2} strokeWidth={1.5} />
+            <Hammer size={19.2} strokeWidth={1.5} />
           </Link>
           
           <a 

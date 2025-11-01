@@ -29,7 +29,7 @@ I also watch a lot of movies in my free time.
 
 You might also find me with a camera in hand.
 
-Feel free to check out my collection over [here](/photos).
+Feel free to check out my photos on [Instagram](https://instagram.com/humgruffin39/).
 
 I also follow [Formula 1](https://formula1.com/), [English Premier League](https://www.premierleague.com/en/), [National Football League](https://www.nfl.com/international/).
 
