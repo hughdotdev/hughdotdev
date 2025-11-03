@@ -4,10 +4,15 @@ import Link from 'next/link';
 import { Newspaper, Hammer, Github, Link as LinkIcon, Check, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [showCheck, setShowCheck] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+  
+  const isPostsPage = pathname.startsWith('/posts');
+  const isCraftsPage = pathname.startsWith('/crafts');
 
   const copyLink = async () => {
     try {
@@ -47,7 +52,9 @@ export function Header() {
           <Link 
             href="/posts" 
             aria-label="Posts"
-            className="opacity-60 hover:opacity-100 transition-opacity"
+            className={`transition-opacity ${
+              isPostsPage ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+            }`}
           >
             <Newspaper size={19.2} strokeWidth={1.5} />
           </Link>
@@ -55,7 +62,9 @@ export function Header() {
           <Link 
             href="/crafts" 
             aria-label="Crafts"
-            className="opacity-60 hover:opacity-100 transition-opacity"
+            className={`transition-opacity ${
+              isCraftsPage ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+            }`}
           >
             <Hammer size={19.2} strokeWidth={1.5} />
           </Link>
