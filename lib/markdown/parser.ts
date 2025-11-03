@@ -8,11 +8,12 @@ export function parseMagicLinkContent(content: string): MagicLinkData {
     return { text: content, iconUrl: null };
   }
   
-  const [, text, customIconUrl] = match;
+  const [, text, lightIconUrl, darkIconUrl] = match;
   
   return {
     text,
-    iconUrl: customIconUrl || null,
+    iconUrl: lightIconUrl || null,
+    darkIconUrl: darkIconUrl || null,
   };
 }
 
@@ -24,7 +25,10 @@ export function extractDomain(url: string): string {
   return url.replace(/^https?:\/\//, '').split('/')[0];
 }
 
-export function createMagicLinkHtml(iconUrl: string, text: string): string {
+export function createMagicLinkHtml(iconUrl: string, text: string, darkIconUrl?: string): string {
+  if (darkIconUrl) {
+    return `<span class="magic-link-icon magic-link-icon-themed" style="background-image: url('${iconUrl}'); --dark-icon: url('${darkIconUrl}');"></span>${text}`;
+  }
   return `<span class="magic-link-icon" style="background-image: url('${iconUrl}');"></span>${text}`;
 }
 

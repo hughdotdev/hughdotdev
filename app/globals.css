@@ -204,6 +204,10 @@
   border-radius: 2px;
 }
 
+.dark .markdown-content a.magic-link .magic-link-icon-themed {
+  background-image: var(--dark-icon) !important;
+}
+
 .markdown-content ul,
 .markdown-content ol {
   @apply mb-6;

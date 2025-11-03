@@ -1,4 +1,4 @@
-export const MAGIC_LINK_PATTERN = /^\[\[(.+?)(?:::(.+?))?\]\]$/;
+export const MAGIC_LINK_PATTERN = /^\[\[(.+?)(?:::(.+?))?(?:::(.+?))?\]\]$/;
 export const MAGIC_LINK_CLASS = 'magic-link';
 
 export const FAVICON_BASE_URL = 'https://www.google.com/s2/favicons';

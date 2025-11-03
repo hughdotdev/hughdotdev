@@ -52,12 +52,12 @@ md.renderer.rules.text = (tokens, idx) => {
     }
     
     if (linkOpenToken?.attrGet('class') === MAGIC_LINK_CLASS) {
-      const { text, iconUrl } = parseMagicLinkContent(content);
+      const { text, iconUrl, darkIconUrl } = parseMagicLinkContent(content);
       const href = linkOpenToken.attrGet('href') || '';
       const domain = extractDomain(href);
       const imageUrl = iconUrl || getDefaultIconUrl(href, domain);
       
-      return createMagicLinkHtml(imageUrl, text);
+      return createMagicLinkHtml(imageUrl, text, darkIconUrl || undefined);
     }
   }
   
