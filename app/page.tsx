@@ -1,14 +1,14 @@
-import { readContentFile, replaceTemplateVariables } from '@/lib/content';
-import { renderMarkdown } from '@/lib/markdown';
-import { getCurrentAge } from '@/lib/time';
-import { MarkdownRenderer } from '@/components/markdown/markdown-renderer';
+import { MarkdownRenderer } from "@/components/markdown/markdown-renderer";
+import { readContentFile, replaceTemplateVariables } from "@/lib/content";
+import { renderMarkdown } from "@/lib/markdown";
+import { getCurrentAge } from "@/lib/time";
 
 function getTokyoTime(): string {
-  return new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Asia/Tokyo',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Tokyo",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
   }).format(new Date());
 }
 
@@ -17,9 +17,9 @@ export default function Home() {
     age: getCurrentAge().toString(),
     time: `<span data-tokyo-time>${getTokyoTime()}</span>`,
   };
-  
+
   const content = renderMarkdown(
-    replaceTemplateVariables(readContentFile('index.md'), variables)
+    replaceTemplateVariables(readContentFile("index.md"), variables)
   );
 
   return (

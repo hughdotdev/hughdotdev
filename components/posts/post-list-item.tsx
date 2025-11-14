@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { formatDate } from '@/lib/time';
-import type { PostMetadata } from '@/lib/content/posts';
+import type { PostMetadata } from "@/lib/content/posts";
+import { formatDate } from "@/lib/time";
+import Link from "next/link";
 
 interface PostListItemProps {
   post: PostMetadata;
@@ -20,4 +20,3 @@ export function PostListItem({ post }: PostListItemProps) {
     </Link>
   );
 }
-

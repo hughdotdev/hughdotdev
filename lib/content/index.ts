@@ -1,3 +1,2 @@
-export { readContentFile } from './reader';
-export { replaceTemplateVariables } from './template';
-
+export { readContentFile } from "./reader";
+export { replaceTemplateVariables } from "./template";

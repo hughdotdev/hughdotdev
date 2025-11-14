@@ -1,10 +1,10 @@
+import { Background } from "@/components/atoms/background";
+import { Footer } from "@/components/organisms/footer";
+import { Header } from "@/components/organisms/header";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import { Background } from "@/components/atoms/background";
-import { Header } from "@/components/organisms/header";
-import { Footer } from "@/components/organisms/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
+      "max-image-preview": "large",
     },
   },
   other: {
-    'robots': 'noai, noimageai',
-    'googlebot': 'noarchive',
-    'googlebot-news': 'nosnippet',
+    robots: "noai, noimageai",
+    googlebot: "noarchive",
+    "googlebot-news": "nosnippet",
   },
 };
 
@@ -46,7 +46,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${robotoCondensed.variable} font-sans antialiased`}
-        style={{ fontFamily: 'var(--font-inter)' }}
+        style={{ fontFamily: "var(--font-inter)" }}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Background />

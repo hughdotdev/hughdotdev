@@ -1,6 +1,5 @@
 # No posts yet
 
-
 Check back soon for new content.
 
 ## What you can do

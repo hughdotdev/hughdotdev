@@ -1,8 +1,8 @@
-import { getPostBySlug, getAllPosts } from '@/lib/content/posts';
-import { renderMarkdown } from '@/lib/markdown';
-import { MarkdownRenderer } from '@/components/markdown/markdown-renderer';
-import { formatDate } from '@/lib/time';
-import { notFound } from 'next/navigation';
+import { MarkdownRenderer } from "@/components/markdown/markdown-renderer";
+import { getAllPosts, getPostBySlug } from "@/lib/content/posts";
+import { renderMarkdown } from "@/lib/markdown";
+import { formatDate } from "@/lib/time";
+import { notFound } from "next/navigation";
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
@@ -25,7 +25,8 @@ export default async function PostPage({ params }: PostPageProps) {
         <header className="mb-8">
           <h1 className="text-3xl font-medium mb-2 mt-0">{post.title}</h1>
           <div className="text-sm text-foreground/40">
-            {formatDate(post.date, { format: 'long' })} · {post.readingTime} min read
+            {formatDate(post.date, { format: "long" })} · {post.readingTime} min
+            read
           </div>
         </header>
         <MarkdownRenderer content={content} />
@@ -33,4 +34,3 @@ export default async function PostPage({ params }: PostPageProps) {
     </main>
   );
 }
-

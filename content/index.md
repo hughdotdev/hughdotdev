@@ -6,7 +6,6 @@ Right now, I'm working at (ahem...) nothing — I mean I'm **open to work** :)
 
 I don't have a specific project, but I'm an **active open source contributor**.
 
-
 ## About me
 
 I'm a **{{age}} y/o web developer** living in **Tokyo**. It's **{{time}}** right now here.
@@ -40,4 +39,3 @@ I also follow [Formula 1](https://formula1.com/), [English Premier League](https
 - [Instagram](https://instagram.com/humgruffin39/)
 
 Or email me at [me@hughfabre.dev](mailto:me@hughfabre.dev)
-

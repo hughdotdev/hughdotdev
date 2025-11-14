@@ -1,6 +1,6 @@
-import { getAllPosts } from '@/lib/content/posts';
-import { PostListItem } from '@/components/posts/post-list-item';
-import { PostsEmpty } from '@/components/posts/posts-empty';
+import { PostListItem } from "@/components/posts/post-list-item";
+import { PostsEmpty } from "@/components/posts/posts-empty";
+import { getAllPosts } from "@/lib/content/posts";
 
 export default function PostsPage() {
   const posts = getAllPosts();
@@ -22,4 +22,3 @@ export default function PostsPage() {
     </main>
   );
 }
-

@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
 
-const POSTS_DIR = 'content/posts';
+const POSTS_DIR = "content/posts";
 const WORDS_PER_MINUTE = 200;
 
 export interface PostMetadata {
@@ -27,17 +27,17 @@ export function getAllPosts(): PostMetadata[] {
 
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames
-    .filter((fileName) => fileName.endsWith('.md') && fileName !== 'index.md')
+    .filter((fileName) => fileName.endsWith(".md") && fileName !== "index.md")
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
+      const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf-8');
+      const fileContents = fs.readFileSync(fullPath, "utf-8");
       const { data, content } = matter(fileContents);
 
       return {
         slug,
         title: data.title || slug,
-        date: data.date || '',
+        date: data.date || "",
         readingTime: calculateReadingTime(content),
       };
     })
@@ -49,15 +49,14 @@ export function getPostBySlug(slug: string): Post | null {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   if (!fs.existsSync(fullPath)) return null;
 
-  const fileContents = fs.readFileSync(fullPath, 'utf-8');
+  const fileContents = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(fileContents);
 
   return {
     slug,
     title: data.title || slug,
-    date: data.date || '',
+    date: data.date || "",
     readingTime: calculateReadingTime(content),
     content,
   };
 }
-

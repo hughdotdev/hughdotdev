@@ -3,4 +3,3 @@ export interface MagicLinkData {
   iconUrl: string | null;
   darkIconUrl?: string | null;
 }
-
