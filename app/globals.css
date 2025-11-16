@@ -128,7 +128,7 @@
 }
 
 .markdown-content {
-  line-height: 1.2;
+  line-height: 1.5;
   color: oklch(from var(--foreground) l c h / 0.65);
 }
 
@@ -157,7 +157,7 @@
 }
 
 .markdown-content p {
-  @apply mb-6;
+  margin-bottom: calc(1em * 1.2);
 }
 
 .markdown-content strong {
@@ -239,15 +239,21 @@
 }
 
 .markdown-content code {
-  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+  @apply bg-muted px-1.5 py-0.5 rounded;
+  font-size: 0.9375rem;
+  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
 }
 
 .markdown-content pre {
   @apply bg-muted p-4 rounded-lg overflow-x-auto mb-6;
+  font-size: 0.9375rem;
+  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
 }
 
 .markdown-content pre code {
   @apply bg-transparent p-0;
+  font-size: 0.9375rem;
+  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
 }
 
 .markdown-content hr {
