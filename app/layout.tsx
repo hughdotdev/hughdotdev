@@ -3,18 +3,19 @@ import { Footer } from "@/components/organisms/footer";
 import { Header } from "@/components/organisms/header";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Inter, Roboto_Condensed } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const satoshi = localFont({
+  src: "./fonts/Satoshi-Variable.woff2",
+  variable: "--font-satoshi",
+  weight: "300 900",
 });
 
-const robotoCondensed = Roboto_Condensed({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-roboto-condensed",
+const archivoNarrow = localFont({
+  src: "./fonts/Archivo-Narrow-Regular.woff2",
+  variable: "--font-archivo-narrow",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -45,8 +46,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoCondensed.variable} font-sans antialiased`}
-        style={{ fontFamily: "var(--font-inter)" }}
+        className={`${satoshi.variable} ${archivoNarrow.variable} font-sans antialiased`}
+        style={{ fontFamily: "var(--font-satoshi)", fontWeight: "500" }}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Background />

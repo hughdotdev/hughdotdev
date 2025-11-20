@@ -53,7 +53,7 @@ export function Header() {
               strokeWidth="2"
             />
           </svg>
-          <span className="text-base font-medium">Hugh Fabre</span>
+          <span className="text-lg font-medium">Hugh Fabre</span>
         </Link>
 
         <nav className="flex items-center gap-5">

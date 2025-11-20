@@ -189,7 +189,8 @@
   border-width: 0px !important;
   border-radius: 0.25rem;
   padding: 0.2rem 0.375rem;
-  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
+  font-size: 1.05rem;
+  font-family: var(--font-archivo-narrow), "Archivo Narrow", sans-serif;
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
     backdrop-filter;
@@ -241,19 +242,19 @@
 .markdown-content code {
   @apply bg-muted px-1.5 py-0.5 rounded;
   font-size: 0.9375rem;
-  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
+  font-family: var(--font-archivo-narrow), "Archivo Narrow", sans-serif;
 }
 
 .markdown-content pre {
   @apply bg-muted p-4 rounded-lg overflow-x-auto mb-6;
   font-size: 0.9375rem;
-  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
+  font-family: var(--font-archivo-narrow), "Archivo Narrow", sans-serif;
 }
 
 .markdown-content pre code {
   @apply bg-transparent p-0;
   font-size: 0.9375rem;
-  font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
+  font-family: var(--font-archivo-narrow), "Archivo Narrow", sans-serif;
 }
 
 .markdown-content hr {
