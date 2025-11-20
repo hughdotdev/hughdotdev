@@ -13,7 +13,7 @@ const satoshi = localFont({
 });
 
 const archivoNarrow = localFont({
-  src: "./fonts/Archivo-Narrow-Regular.woff2",
+  src: "./fonts/ArchivoNarrow-Regular.woff2",
   variable: "--font-archivo-narrow",
   weight: "400",
 });
