@@ -1,11 +1,10 @@
+import { cache } from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { unstable_cache } from "next/cache";
 
 const POSTS_DIR = "content/posts";
 const WORDS_PER_MINUTE = 200;
-const CACHE_REVALIDATE = 3600;
 
 export interface PostMetadata {
   slug: string;
@@ -46,23 +45,9 @@ const getAllPostsInternal = (): PostMetadata[] => {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-const getAllPostsCached = unstable_cache(
-  getAllPostsInternal,
-  ["all-posts"],
-  {
-    revalidate: CACHE_REVALIDATE,
-    tags: ["posts"],
-  }
-);
-
-export const getAllPosts = (): PostMetadata[] => {
-  try {
-    const result = getAllPostsCached();
-    return Array.isArray(result) ? result : [];
-  } catch {
-    return [];
-  }
-};
+export const getAllPosts = cache((): PostMetadata[] => {
+  return getAllPostsInternal();
+});
 
 const getPostBySlugInternal = (slug: string): Post | null => {
   const postsDirectory = path.join(process.cwd(), POSTS_DIR);
@@ -81,21 +66,6 @@ const getPostBySlugInternal = (slug: string): Post | null => {
   };
 };
 
-const getPostBySlugCached = (slug: string) =>
-  unstable_cache(
-    () => getPostBySlugInternal(slug),
-    [`post-${slug}`],
-    {
-      revalidate: CACHE_REVALIDATE,
-      tags: ["posts", `post-${slug}`],
-    }
-  );
-
-export const getPostBySlug = (slug: string): Post | null => {
-  try {
-    const result = getPostBySlugCached(slug)();
-    return result as Post | null;
-  } catch {
-    return null;
-  }
-};
+export const getPostBySlug = cache((slug: string): Post | null => {
+  return getPostBySlugInternal(slug);
+});
