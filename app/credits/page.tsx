@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./credits.module.css";
 
 const AUTHOR = "Hugh Fabre";
-const HOLD_DURATION_MS = 2000;
+const HOLD_DURATION_MS = 1000;
 
 const CREW_ROLES = [
   "Frontend Development",
@@ -199,7 +199,7 @@ export default function CreditsPage() {
           <span className="dark">
             <Kbd keys={["ESC"]} active={isHolding} className="text-base" />
           </span>
-          <span>for 2s to exit</span>
+          <span>for 1s to exit</span>
         </div>
         <Link href="/" className={styles.controlsLink}>
           Or click here
