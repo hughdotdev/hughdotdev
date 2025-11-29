@@ -1,6 +1,6 @@
 # 404
 
-Oops! This page doesn't exist.
+Not found.
 
 You might have mistyped the URL, or the page has been moved.
 
