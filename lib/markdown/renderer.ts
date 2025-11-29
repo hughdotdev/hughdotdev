@@ -73,7 +73,7 @@ function setupRenderers(md: MarkdownIt) {
         const { text, iconUrl, darkIconUrl } = parseMagicLinkContent(content);
         const href = linkOpenToken.attrGet("href") || "";
         const domain = extractDomain(href);
-        const imageUrl = iconUrl || getDefaultIconUrl(href, domain);
+        const imageUrl = iconUrl || getDefaultIconUrl(domain);
 
         return createMagicLinkHtml(imageUrl, text, darkIconUrl || undefined);
       }

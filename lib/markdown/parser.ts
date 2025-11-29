@@ -17,7 +17,7 @@ function parseMagicLinkContent(content: string): MagicLinkData {
   };
 }
 
-function getDefaultIconUrl(href: string, domain: string): string {
+function getDefaultIconUrl(domain: string): string {
   return `${FAVICON_BASE_URL}?domain=${domain}&sz=${FAVICON_SIZE}`;
 }
 

@@ -1,19 +1,15 @@
-import { LINK_CONSTANTS } from "@/lib/markdown/constants";
+import { LINKS } from "@/lib/constants";
 
 export function replaceTemplateVariables(
   content: string,
-  variables: Record<string, string>
+  variables: Record<string, string> = {}
 ): string {
+  const allVariables = { ...LINKS, ...variables };
   let result = content;
 
-  Object.entries(variables).forEach(([key, value]) => {
-    const pattern = new RegExp(`\\{\\{${key}\\}\\}`, "g");
-    result = result.replace(pattern, value);
-  });
+  for (const [key, value] of Object.entries(allVariables)) {
+    result = result.replaceAll(`{{${key}}}`, value);
+  }
 
   return result;
-}
-
-export function getLinkConstants(): Record<string, string> {
-  return LINK_CONSTANTS;
 }

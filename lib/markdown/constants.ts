@@ -10,12 +10,3 @@ export const MARKDOWN_CONFIG = {
   linkify: true,
   typographer: true,
 } as const;
-
-export const LINK_CONSTANTS = {
-  github: "https://github.com/hughdotdev/",
-  githubRepo: "https://github.com/hughdotdev/hughdotdev",
-  discord: "https://discord.com/users/924311449973686282/",
-  instagram: "https://instagram.com/humgruffin39/",
-  email: "me@hugh.dev",
-  emailLink: "mailto:me@hugh.dev",
-} as const;

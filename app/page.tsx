@@ -1,5 +1,5 @@
 import { MarkdownRenderer } from "@/components/markdown/markdown-renderer";
-import { readContentFile, replaceTemplateVariables, getLinkConstants } from "@/lib/content";
+import { readContentFile, replaceTemplateVariables } from "@/lib/content";
 import { renderMarkdown } from "@/lib/markdown";
 import { getCurrentAge } from "@/lib/time";
 import { Suspense } from "react";
@@ -16,14 +16,11 @@ export const dynamic = "force-static";
 export const revalidate = 3600;
 
 export default function Home() {
-  const variables = {
-    age: getCurrentAge().toString(),
-    time: `<span data-tokyo-time>${getTokyoTime()}</span>`,
-    ...getLinkConstants(),
-  };
-
   const content = renderMarkdown(
-    replaceTemplateVariables(readContentFile("index.md"), variables)
+    replaceTemplateVariables(readContentFile("index.md"), {
+      age: getCurrentAge().toString(),
+      time: `<span data-tokyo-time>${getTokyoTime()}</span>`,
+    })
   );
 
   return (
