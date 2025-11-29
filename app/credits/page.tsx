@@ -1,6 +1,7 @@
 "use client";
 
 import { Kbd } from "@/components/atoms/kbd";
+import { Volume2, VolumeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -8,6 +9,8 @@ import styles from "./credits.module.css";
 
 const AUTHOR = "Hugh Fabre";
 const HOLD_DURATION_MS = 1000;
+const BGM_URL =
+  "https://g5lp1abfa6.ufs.sh/f/6KdjywPidJK33uNREcj6KjiQksDnAFZvclewtRL42uTIG8YJ";
 
 const CREW_ROLES = [
   "Frontend Development",
@@ -111,9 +114,18 @@ function useEscapeHold(onComplete: () => void) {
 export default function CreditsPage() {
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   const navigateHome = useCallback(() => router.push("/"), [router]);
   const isHolding = useEscapeHold(navigateHome);
+
+  const toggleMute = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  }, [isMuted]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -128,6 +140,7 @@ export default function CreditsPage() {
 
   return (
     <div className={styles.page}>
+      <audio ref={audioRef} src={BGM_URL} autoPlay loop muted />
       <div className={styles.container}>
         <div className={styles.content} ref={contentRef}>
           <div className={styles.spacerFull} />
@@ -194,16 +207,22 @@ export default function CreditsPage() {
       </div>
 
       <div className={styles.controls}>
-        <div className={styles.controlsHint}>
-          <span>Hold</span>
-          <span className="dark">
-            <Kbd keys={["ESC"]} active={isHolding} className="text-base" />
-          </span>
-          <span>for 1s to exit</span>
+        <div className={styles.controlsRow}>
+          <div className={styles.controlsHint}>
+            <span>Hold</span>
+            <span className="dark">
+              <Kbd keys={["ESC"]} active={isHolding} className="text-base" />
+            </span>
+            <span>for 1s to exit</span>
+          </div>
+          <button
+            onClick={toggleMute}
+            className={styles.muteButton}
+            aria-label={isMuted ? "Unmute" : "Mute"}
+          >
+            {isMuted ? <VolumeOff size={20} /> : <Volume2 size={20} />}
+          </button>
         </div>
-        <Link href="/" className={styles.controlsLinkDesktop}>
-          Or click here
-        </Link>
         <Link href="/" className={styles.controlsLinkMobile}>
           Click here to exit
         </Link>

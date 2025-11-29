@@ -3,6 +3,7 @@
 import { RichButton } from "@/components/molecules/rich-button";
 import {
   Check,
+  CircleStar,
   Github,
   Hammer,
   Link as LinkIcon,
@@ -25,6 +26,7 @@ export const Header = memo(function Header() {
 
   const isPostsPage = pathname.startsWith("/posts");
   const isCraftsPage = pathname.startsWith("/crafts");
+  const isCreditsPage = pathname.startsWith("/credits");
 
   const copyLink = useCallback(async () => {
     try {
@@ -99,6 +101,17 @@ export const Header = memo(function Header() {
             }`}
           >
             <Hammer size={19.2} strokeWidth={1.5} />
+          </Link>
+
+          <Link
+            href="/credits"
+            aria-label="Credits"
+            prefetch
+            className={`transition-opacity ${
+              isCreditsPage ? "opacity-100" : "opacity-60 hover:opacity-100"
+            }`}
+          >
+            <CircleStar size={19.2} strokeWidth={1.5} />
           </Link>
 
           <a
