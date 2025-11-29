@@ -1,5 +1,6 @@
 "use client";
 
+import { RichButton } from "@/components/molecules/rich-button";
 import {
   Check,
   Github,
@@ -12,12 +13,15 @@ import {
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 
 export const Header = memo(function Header() {
   const [showCheck, setShowCheck] = useState(false);
+  const [showEyeDialog, setShowEyeDialog] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
+  const toggleCountRef = useRef(0);
+  const toggleStartTimeRef = useRef<number | null>(null);
 
   const isPostsPage = pathname.startsWith("/posts");
   const isCraftsPage = pathname.startsWith("/crafts");
@@ -35,6 +39,24 @@ export const Header = memo(function Header() {
   }, []);
 
   const toggleTheme = useCallback(() => {
+    const now = Date.now();
+
+    if (
+      toggleStartTimeRef.current === null ||
+      now - toggleStartTimeRef.current > 5000
+    ) {
+      toggleStartTimeRef.current = now;
+      toggleCountRef.current = 1;
+    } else {
+      toggleCountRef.current += 1;
+    }
+
+    if (toggleCountRef.current >= 10) {
+      setShowEyeDialog(true);
+      toggleCountRef.current = 0;
+      toggleStartTimeRef.current = null;
+    }
+
     setTheme(resolvedTheme === "light" ? "dark" : "light");
   }, [resolvedTheme, setTheme]);
 
@@ -137,6 +159,25 @@ export const Header = memo(function Header() {
           </button>
         </nav>
       </header>
+
+      {showEyeDialog && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-background border border-foreground/20 rounded-lg p-6 max-w-sm mx-4 shadow-xl">
+            <p className="text-lg font-medium mb-2">Strobe detected</p>
+            <p className="text-foreground/80 mb-4">
+              Aren&apos;t your eyes getting tired? <br />
+              Maybe take a break from flipping themes like a light switch at a
+              rave?
+            </p>
+            <RichButton
+              onClick={() => setShowEyeDialog(false)}
+              className="w-full"
+            >
+              I&apos;ll behave
+            </RichButton>
+          </div>
+        </div>
+      )}
     </div>
   );
 });

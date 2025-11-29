@@ -38,6 +38,16 @@ const archivoNarrow = localFont({
   adjustFontFallback: false,
 });
 
+const instrumentSerif = localFont({
+  src: "./fonts/InstrumentSerif-Regular.woff2",
+  variable: "--font-instrument-serif",
+  weight: "400",
+  display: "swap",
+  preload: false,
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: false,
+});
+
 export const metadata: Metadata = {
   title: "Hugh Fabre",
   description: "A solo web engineer.",
@@ -93,7 +103,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${satoshi.variable} ${archivoNarrow.variable} font-sans antialiased`}
+        className={`${satoshi.variable} ${archivoNarrow.variable} ${instrumentSerif.variable} font-sans antialiased`}
         style={{ fontFamily: "var(--font-satoshi)", fontWeight: "500" }}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
