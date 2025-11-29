@@ -179,10 +179,16 @@
 }
 
 .controlsRow {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 1rem;
   min-height: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .controlsRow {
+    display: flex;
+  }
 }
 
 .controlsHint {
