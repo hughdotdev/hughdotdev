@@ -32,14 +32,14 @@ I also watch a lot of **movies** in my free time.
 
 You might also find me with a **camera** in my hand.
 
-Feel free to check out my photos on [Instagram](https://instagram.com/humgruffin39/).
+Feel free to check out my photos on [Instagram]({{instagram}}).
 
 I also follow [Formula 1](https://formula1.com/), [English Premier League](https://www.premierleague.com/en/), [National Football League](https://www.nfl.com/international/).
 
 ## Ping me on
 
-- [GitHub](https://github.com/hughdotdev/)
-- [Discord](https://discord.com/users/924311449973686282/)
-- [Instagram](https://instagram.com/humgruffin39/)
+- [GitHub]({{github}}/)
+- [Discord]({{discord}})
+- [Instagram]({{instagram}})
 
-Or email me at [me@hugh.dev](mailto:me@hugh.dev)
+Or email me at [{{email}}]({{emailLink}})

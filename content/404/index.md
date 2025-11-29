@@ -10,4 +10,4 @@ You might have mistyped the URL, or the page has been moved.
 - Check out my [posts](/posts)
 - Browse my [crafts](/crafts)
 
-If you think this is a bug, feel free to [open an issue](https://github.com/hughdotdev/hugh.dev/).
+If you think this is a bug, feel free to [open an issue]({{githubRepo}}/).

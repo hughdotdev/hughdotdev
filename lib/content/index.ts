@@ -1,2 +1,2 @@
 export { readContentFile } from "./reader";
-export { replaceTemplateVariables } from "./template";
+export { replaceTemplateVariables, getLinkConstants } from "./template";

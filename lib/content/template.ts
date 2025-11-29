@@ -1,3 +1,5 @@
+import { LINK_CONSTANTS } from "@/lib/markdown/constants";
+
 export function replaceTemplateVariables(
   content: string,
   variables: Record<string, string>
@@ -10,4 +12,8 @@ export function replaceTemplateVariables(
   });
 
   return result;
+}
+
+export function getLinkConstants(): Record<string, string> {
+  return LINK_CONSTANTS;
 }

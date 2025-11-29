@@ -1,5 +1,6 @@
 "use client";
 
+import { LINK_CONSTANTS } from "@/lib/markdown/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo, useMemo } from "react";
@@ -30,7 +31,7 @@ export const Footer = memo(function Footer() {
       )}
       <p className="text-sm footer-text">
         <a
-          href="https://github.com/hughdotdev/hugh.dev/blob/main/LICENSE"
+          href={`${LINK_CONSTANTS.githubRepo}/blob/main/LICENSE`}
           target="_blank"
           rel="noopener noreferrer"
           className="footer-link"

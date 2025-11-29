@@ -1,6 +1,7 @@
 "use client";
 
 import { RichButton } from "@/components/molecules/rich-button";
+import { LINK_CONSTANTS } from "@/lib/markdown/constants";
 import {
   Check,
   Github,
@@ -102,7 +103,7 @@ export const Header = memo(function Header() {
           </Link>
 
           <a
-            href="https://github.com/hughdotdev"
+            href={LINK_CONSTANTS.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"

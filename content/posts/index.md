@@ -7,4 +7,4 @@ Check back soon for new content.
 - Go back to the [home page](/)
 - Browse my [crafts](/crafts)
 
-If you think this is a bug, feel free to [open an issue](https://github.com/hughdotdev/hugh.dev/).
+If you think this is a bug, feel free to [open an issue]({{githubRepo}}/).
