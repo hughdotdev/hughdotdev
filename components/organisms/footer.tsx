@@ -30,7 +30,7 @@ export const Footer = memo(function Footer() {
       )}
       <p className="text-sm footer-text">
         <a
-          href="https://mit-license.org/"
+          href="https://github.com/hughdotdev/hugh.dev/blob/main/LICENSE"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-link"
