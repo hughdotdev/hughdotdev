@@ -47,7 +47,7 @@
 }
 
 .title {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 10vw, 5rem);
   font-weight: 400;
   letter-spacing: 0.2em;
   color: white;
@@ -179,20 +179,46 @@
 }
 
 .controlsHint {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.6);
 }
 
-.controlsLink {
+@media (min-width: 768px) {
+  .controlsHint {
+    display: flex;
+  }
+}
+
+.controlsLinkDesktop,
+.controlsLinkMobile {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.controlsLink:hover {
+.controlsLinkDesktop:hover,
+.controlsLinkMobile:hover {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.controlsLinkDesktop {
+  display: none;
+}
+
+.controlsLinkMobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .controlsLinkDesktop {
+    display: block;
+  }
+
+  .controlsLinkMobile {
+    display: none;
+  }
 }

@@ -201,8 +201,11 @@ export default function CreditsPage() {
           </span>
           <span>for 1s to exit</span>
         </div>
-        <Link href="/" className={styles.controlsLink}>
+        <Link href="/" className={styles.controlsLinkDesktop}>
           Or click here
+        </Link>
+        <Link href="/" className={styles.controlsLinkMobile}>
+          Click here to exit
         </Link>
       </div>
     </div>
