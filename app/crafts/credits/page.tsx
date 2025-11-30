@@ -140,7 +140,7 @@ export default function CreditsPage() {
 
   return (
     <div className={styles.page}>
-      <audio ref={audioRef} src={BGM_URL} autoPlay loop muted />
+      <audio ref={audioRef} src={BGM_URL} autoPlay muted />
       <div className={styles.container}>
         <div className={styles.content} ref={contentRef}>
           <div className={styles.spacerFull} />
