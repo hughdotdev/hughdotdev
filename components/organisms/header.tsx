@@ -79,7 +79,7 @@ export const Header = memo(function Header() {
           <span className="text-lg font-medium">Hugh Fabre</span>
         </Link>
 
-        <nav className="flex items-center gap-5">
+        <nav className="flex items-center gap-[14px] sm:gap-5">
           <Link
             href="/posts"
             aria-label="Posts"
@@ -112,7 +112,7 @@ export const Header = memo(function Header() {
             <Github size={19.2} strokeWidth={1.5} />
           </a>
 
-          <div className="h-5 w-px bg-foreground opacity-20" />
+          <div className="h-4 sm:h-5 w-px bg-foreground opacity-20" />
 
           <button
             onClick={copyLink}
