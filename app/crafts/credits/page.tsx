@@ -41,16 +41,7 @@ const CREW_ROLES = [
   "Rubber Duck Debugging",
 ];
 
-const CAST_ROLES = [
-  "Travis Bickle",
-  "Patrick Bateman",
-  "Arthur Fleck",
-  "Tyler Durden",
-  "Vincent Freeman",
-  "Louis Bloom",
-  "Donnie Darko",
-  "Mark Renton",
-];
+const CAST_ROLES = ["Every Character"];
 
 const SPECIAL_THANKS = [
   "Tommy, for the UI components",
