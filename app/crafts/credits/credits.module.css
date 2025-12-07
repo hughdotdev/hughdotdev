@@ -18,7 +18,13 @@
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  animation: scroll 81s linear forwards;
+  animation: scroll 82s linear forwards;
+}
+
+@media (max-width: 767px) {
+  .content {
+    animation-duration: 86s;
+  }
 }
 
 @keyframes scroll {
